@@ -88,7 +88,7 @@ For full working demo, see the [Demo app](https://github.com/shannah/cn1-applesi
 
 ## Supported Platforms
 
-This library will work on all platforms.  On iOS it will use native authentication.  On other platforms it will use Oauth2 authentication.
+This library will work on all platforms.  On iOS 13 and higher, it will use native authentication.  On other platforms it will use Oauth2 authentication.
 
 ## Credits
 

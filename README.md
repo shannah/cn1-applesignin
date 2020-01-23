@@ -1,11 +1,11 @@
 # Sign-in with Apple Codename One Library
-Sign-in with Apple Support for Codename One
+Sign-in with Apple Support for [Codename One](https://www.codenameone.com)
 
 ![Sign-in with Apple demo screenshot](https://github.com/shannah/cn1-applesignin/wiki/images/iOS-Screenshots.png "Sign-in with apple demo")
 
 ## Synopsis
 
-This library adds support for Sign-in with Apple to Codename One apps.  On iOS, this uses the native Authentication framework.  On other platforms, it uses Apple's Oauth2 authentication.
+This library adds support for Sign-in with Apple to [Codename One](https://www.codenameone.com) apps.  On iOS, this uses the native Authentication framework.  On other platforms, it uses Apple's Oauth2 authentication.
 
 ## License
 
@@ -19,6 +19,12 @@ GPL2+Classpath Exception
 
 ~~~~
 AppleLogin login = new AppleLogin();
+// If using on non-iOS platforms, set Oauth2 settings here:
+// login.setClientId(...);
+// login.setKeyId(...);
+// login.setTeamId(...);
+// login.setRedirectURI(...);
+// login.setPrivateKey(...);
 
 if (login.isUserLoggedIn()) {
     new MainForm().show();
@@ -80,3 +86,13 @@ class MainForm extends Form {
 ~~~~
 
 For full working demo, see the [Demo app](https://github.com/shannah/cn1-applesignin/tree/master/CN1AppleSignInDemo)
+
+## Supported Platforms
+
+This library will work on all platforms.  On iOS it will use native authentication.  On other platforms it will use Oauth2 authentication.
+
+## Credits
+
+* Created by [Steve Hannah](https://sjhannah.com)
+* [Codename One](https://www.codenameone.com)
+

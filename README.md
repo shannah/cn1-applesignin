@@ -47,7 +47,6 @@ class LoginForm extends Form {
         AppleLogin.decorateLoginButton(loginBtn, 0x0, 0xffffff);
 
         loginBtn.addActionListener(evt->{
-            updateAppleLogin();
             login.doLogin(new LoginCallback() {
                 @Override
                 public void loginFailed(String errorMessage) {

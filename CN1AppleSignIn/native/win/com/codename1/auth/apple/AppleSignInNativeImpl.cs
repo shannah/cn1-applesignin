@@ -1,5 +1,5 @@
 namespace com.codename1.auth.apple{
-
+using System;
 
 public class AppleSignInNativeImpl : IAppleSignInNativeImpl {
     public void doLogin() {

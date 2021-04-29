@@ -62,7 +62,9 @@
 
     <target name="jar" depends="compile,Stubs">
         <mkdir dir="build/lib" />
+        <mkdir dir="build/stubs"/>
         <zip basedir="${build.classes.dir}" compress="false" destfile="build/lib/main.zip" />
+        
         <zip basedir="build/stubs" compress="false" destfile="build/lib/stubs.zip" />
         <copy file="manifest.properties" todir="build/lib" />
         <copy file="codenameone_library_appended.properties" todir="build/lib" />
@@ -77,7 +79,7 @@
         <mkdir dir="dist" />
         <zip basedir="build/lib" compress="true" destfile="dist/${application.title}.cn1lib" />
         <copy file="dist/${application.title}.cn1lib" todir="../CN1AppleSignInDemo/lib"/>
-        <ant dir="../CN1AppleSignInDemo" target="refresh-libs-impl" usenativebasedir="true"/>
+        <!--<ant dir="../CN1AppleSignInDemo" target="refresh-libs-impl" usenativebasedir="true"/>-->
     </target>
 
     <target name="buildNativeRIM">

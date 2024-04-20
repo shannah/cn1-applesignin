@@ -169,7 +169,19 @@ public class AppleSignIn  {
         AppleCredentialState credentialState = AppleCredentialState.getCredentialState(state);
         System.out.println("Credential state: "+credentialState);
         if (credentialState == AppleCredentialState.Authorized) {
-            AppleCredential credential = new AppleCredential(identityToken, authorizationCode, credentialState, userId, name, email);
+            AppleCredential previousCredential = instance.getCredential();
+            // Apple only provides email and name on first login, so we need to merge the previous credential
+            String previousEmail = previousCredential == null ? "" : previousCredential.getEmail();
+            String previousName = previousCredential == null ? "" : previousCredential.getFullName();
+            AppleCredential credential = new AppleCredential(
+                    identityToken,
+                    authorizationCode,
+                    credentialState,
+                    userId,
+                    name != null && !name.isEmpty() ? name : previousName,
+                    email != null && !email.isEmpty() ? email : previousEmail
+            );
+
             instance.setCredential(credential);
             instance.signinListeners.fireActionEvent(new SignInEvent(instance, credential));
         } else {

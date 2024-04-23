@@ -69,15 +69,20 @@ static void fireCheckStateError(int errorCode, NSString *errorMessage) {
 //static void fireSigninEvent(String identityToken, String authorizationCode, String userId, String email, String name, String state) {
 API_AVAILABLE(ios(13.0))
 static void fireLoginEvent(ASAuthorizationAppleIDCredential *appleIDCredential) {
+    NSPersonNameComponentsFormatter *formatter = [[NSPersonNameComponentsFormatter alloc] init];
+    formatter.style = NSPersonNameComponentsFormatterStyleMedium;
+    NSString *fullName = [formatter stringFromPersonNameComponents:appleIDCredential.fullName];
+
     com_codename1_auth_apple_AppleSignIn_fireSigninEvent___java_lang_String_java_lang_String_java_lang_String_java_lang_String_java_lang_String_java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG
         fromNSString(CN1_THREAD_GET_STATE_PASS_ARG  [[NSString alloc] initWithData:appleIDCredential.identityToken encoding:NSUTF8StringEncoding]),
         fromNSString(CN1_THREAD_GET_STATE_PASS_ARG  [[NSString alloc] initWithData:appleIDCredential.authorizationCode encoding:NSUTF8StringEncoding]),
         fromNSString(CN1_THREAD_GET_STATE_PASS_ARG appleIDCredential.user),
         fromNSString(CN1_THREAD_GET_STATE_PASS_ARG appleIDCredential.email),
-        fromNSString(CN1_THREAD_GET_STATE_PASS_ARG [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents:appleIDCredential.fullName style:NSPersonNameComponentsFormatterStyleMedium options:NSPersonNameComponentsFormatterPhonetic]),
+        fromNSString(CN1_THREAD_GET_STATE_PASS_ARG fullName),
         fromNSString(CN1_THREAD_GET_STATE_PASS_ARG @"Authorized")
     );
 }
+
 
 static void fireSignInError(int errorCode, NSString* errorMessage) {
     
